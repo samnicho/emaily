@@ -38,6 +38,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback", // the route that users will be sent to once they've granted permissions via google (can be anything)
+      proxy: true // tell GoogleStrategy to trust proxys, this fixes the https to http error
     },
     (accessToken, refreshToken, profile, done) => {
       // check the DB for a user record with the same profile ID as the one just returned by google
