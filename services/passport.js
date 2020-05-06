@@ -48,16 +48,16 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       // console.log('accessToken: ', accessToken);
-      console.log('profile ID: ', profile.id);
-      console.log('profile name: ', profile.displayName);
+      // console.log('profile ID: ', profile.id);
+      // console.log('profile name: ', profile.displayName);
       // check the DB for a user record with the same profile ID as the one just returned by google
       User.findOne({ googleId: profile.id }).then((existingUser) => {
         if (existingUser) {
-          console.log('existing user');
+          // console.log('existing user');
           // we already have a record with the given profile ID
           done(null, existingUser);
         } else {
-          console.log('new user');
+          // console.log('new user');
           // we don't have a user record witha this ID, make a new record and save it to the DB
           new User({ googleId: profile.id }).save().then((user) => {
             done(null, user);
