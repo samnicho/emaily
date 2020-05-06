@@ -44,6 +44,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
+      proxy: true // tell GoogleStrategy to trust proxys, this fixes the https to http error 
     },
     (accessToken, refreshToken, profile, done) => {
       // console.log('accessToken: ', accessToken);
